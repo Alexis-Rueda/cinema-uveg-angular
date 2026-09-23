@@ -1,13 +1,15 @@
-import { DecimalPipe, DatePipe } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { rxResource, toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MoviesService } from '@movies/services/movies.service';
 import { map } from 'rxjs';
+import { MovieImage3d } from '@movies/components/movie-image-3d/movie-image-3d';
+import { MovieContent } from '@movies/components/movie-content/movie-content';
+import { MovieDetailSkeleton } from '@movies/components/movie-detail-skeleton/movie-detail-skeleton';
 
 @Component({
   selector: 'app-movie-detail',
-  imports: [DecimalPipe, DatePipe],
+  imports: [MovieImage3d, MovieContent, MovieDetailSkeleton],
   templateUrl: './movie-detail.html',
 })
 export class MovieDetail implements OnInit {

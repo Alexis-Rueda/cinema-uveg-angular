@@ -1,0 +1,43 @@
+<div class="card-body justify-center items-center">
+  <h2 class="card-title">{{ movie().title }}</h2>
+  <p class="card-text w-full sm:w-1/2 md:w-3/4 lg:w-full">{{ movie().overview }}</p>
+
+  <p class="text-sm text-muted">Lanzamiento:</p>
+  <p class="text-sm text-muted">{{ movie().release_date | date }}</p>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-title">Popularidad</div>
+      <div class="stat-value">{{movie().popularity | number:'1.0-2' }}</div>
+    </div>
+    <div class="stat">
+      <div class="stat-title">Calificación</div>
+      <div class="stat-value">{{movie().vote_average | number:'1.0-2' }}</div>
+    </div>
+  </div>
+
+  <p>Generos: </p>
+  <div class="flex gap-2">
+    <div class="join join-horizontal">
+      @for (genre of movie().genres; track genre.id) {
+      <button class="badge badge-neutral join-item">{{ genre.name }}</button>
+      }
+    </div>
+  </div>
+
+  <p>Compañias: </p>
+  <div class="flex gap-2">
+    <div class="avatar-group -space-x-6">
+      <span class="text-rotate text-3xl duration-6000">
+        <span class="justify-items-center">
+          @for (company of movie().production_companies; track company.id) {
+          <span>{{ company.name }}</span>
+          }
+        </span>
+      </span>
+    </div>
+  </div>
+
+  <p>Estado:</p>
+  <div class="badge badge-neutral">{{ movie().status === 'Released' ? 'Lanzado' : 'No lanzado' }}</div>
+</div>
