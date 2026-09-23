@@ -1,7 +1,7 @@
 @let movie = movieResource.value();
 @if (movie?.poster_path) {
 <div class="card bg-base-100 w-full h-full flex flex-col items-center ">
-  <app-movie-image-3d [movieImageUrl]="movie?.poster_path" [movieName]="movie?.title"></app-movie-image-3d>
+  <app-movie-image-3d [movie]="movie"></app-movie-image-3d>
 
   <app-movie-content [movie]="movie" />
 </div>

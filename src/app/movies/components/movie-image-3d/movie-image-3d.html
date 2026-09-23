@@ -1,8 +1,8 @@
 <div class="hover-3d">
   <!-- content -->
   <figure class="w-60 rounded-2xl">
-    <img [src]="`https://image.tmdb.org/t/p/w500/${movieImageUrl()}`" [alt]="movieName()"
-      class="w-full h-full object-cover" loading="lazy" />
+    <img [src]="`https://image.tmdb.org/t/p/w500/${movie().poster_path}`" [alt]="movie().title"
+      class="w-full h-full object-cover" loading="lazy" style="view-transition-name: image-{{ movie().id }}" />
   </figure>
   <!-- 8 empty divs needed for the 3D effect -->
   <div></div>

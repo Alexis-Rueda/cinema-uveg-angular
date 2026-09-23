@@ -36,6 +36,7 @@ export class MovieMapper {
     return {
       id: movie.id,
       backdrop_path: movie.backdrop_path,
+      poster_path: movie.poster_path,
       title: movie.title,
       overview: movie.overview,
       popularity: movie.popularity,
