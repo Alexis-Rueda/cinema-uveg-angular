@@ -1,0 +1,22 @@
+<div
+  class="card card-side bg-base-100 shadow-sm hover:shadow-lg transition-shadow duration-300 cursor-pointer transform hover:scale-105"
+  routerLink="/movies/{{movie().id}}">
+  <figure>
+    @if (movie().backdrop_path) {
+    <img [src]="`https://image.tmdb.org/t/p/w500/${movie().backdrop_path}`" alt="Movie" />
+    } @else {
+    <div class="skeleton h-70 w-full"></div>
+    }
+  </figure>
+
+  <div class="card-body w-full">
+    <h2 class="card-title w-full h-25 overflow-hidden">{{movie().title}}</h2>
+    <div class="stats ">
+      <div class="stat">
+        <div class="stat-title">Popularidad</div>
+        <div class="stat-value">{{movie().popularity | number:'1.0-2' }}</div>
+        <div class="stat-desc">{{movie().release_date | date}}</div>
+      </div>
+    </div>
+  </div>
+</div>
