@@ -33,7 +33,6 @@ export class MoviesService {
         },
       })
       .pipe(
-        tap((resp) => console.log(resp)),
         map((resp) => resp.results.map(MovieMapper.toSimpleTopRatedMovie)),
         tap((resp) => this.moviesCache.set(key, resp))
       );

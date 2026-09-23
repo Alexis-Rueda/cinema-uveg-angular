@@ -1,1 +1,98 @@
-<p>movie-detail works!</p>,
+@let movie = movieResource.value();
+@if (movie?.poster_path) {
+<div class="card bg-base-100 w-full h-full flex flex-col items-center ">
+  <div class="hover-3d">
+    <!-- content -->
+    <figure class="w-60 rounded-2xl">
+      <img [src]="`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`" [alt]="movie?.title" class="w-full h-full object-cover"
+    loading="lazy" />
+    </figure>
+    <!-- 8 empty divs needed for the 3D effect -->
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <div class="card-body justify-center items-center">
+    <h2 class="card-title">{{ movie?.title }}</h2>
+    <p class="card-text w-full sm:w-1/2 md:w-3/4 lg:w-full">{{ movie?.overview }}</p>
+
+    <p class="text-sm text-muted">Lanzamiento:</p>
+    <p class="text-sm text-muted">{{ movie?.release_date | date }}</p>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-title">Popularidad</div>
+        <div class="stat-value">{{movie?.popularity | number:'1.0-2' }}</div>
+      </div>
+      <div class="stat">
+        <div class="stat-title">Calificación</div>
+        <div class="stat-value">{{movie?.vote_average | number:'1.0-2' }}</div>
+      </div>
+    </div>
+
+    <p>Generos: </p>
+    <div class="flex gap-2">
+      <div class="join join-horizontal">
+        @for (genre of movie?.genres; track genre.id) {
+        <button class="badge badge-neutral join-item">{{ genre.name }}</button>
+        }
+      </div>
+    </div>
+
+    <p>Compañias: </p>
+    <div class="flex gap-2">
+      <div class="avatar-group -space-x-6">
+        <span class="text-rotate text-3xl duration-6000">
+          <span class="justify-items-center">
+            @for (company of movie?.production_companies; track company.id) {
+            <span>{{ company.name }}</span>
+            }
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <p>Estado:</p>
+    <div class="badge badge-neutral">{{ movie?.status === 'Released' ? 'Lanzado' : 'No lanzado' }}</div>
+  </div>
+</div>
+} @else {
+<div class="card bg-base-100 w-full h-full flex flex-col items-center ">
+  <div class="skeleton h-90 w-60"></div>
+
+  <div class="card-body justify-center items-center">
+    <div class="skeleton h-4 w-full"></div>
+    <div class="skeleton h-4 w-full"></div>
+
+    <div class="skeleton h-4 w-20 mt-4"></div>
+    <div class="skeleton h-4 w-30"></div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="skeleton h-4 w-28"></div>
+        <div class="skeleton h-16 w-16 shrink-0 rounded-2xl"></div>
+      </div>
+      <div class="stat">
+        <div class="skeleton h-4 w-28"></div>
+        <div class="skeleton h-16 w-16 shrink-0 rounded-2xl"></div>
+      </div>
+    </div>
+
+    <div class="skeleton h-4 w-20 mt-4"></div>
+    <div class="skeleton h-4 w-40"></div>
+
+    <div class="skeleton h-4 w-20 mt-4"></div>
+    <div class="skeleton h-15 w-40"></div>
+
+    <div class="skeleton h-4 w-20 mt-4"></div>
+    <div class="skeleton h-4 w-30"></div>
+  </div>
+
+</div>
+}
