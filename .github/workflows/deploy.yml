@@ -31,11 +31,22 @@ jobs:
       - name: Create environment file
         run: |
           mkdir -p src/environments
+
+          # Archivo base
+          cat <<EOF > src/environments/environment.ts
+          export const environment = {
+            production: false,
+            API_URL: '',
+            API_KEY: ''
+          };
+          EOF
+
+          # Archivo de producción
           cat <<EOF > src/environments/environment.prod.ts
           export const environment = {
             production: true,
-            API_URL: '${{ secrets.API_KEY }}',
-            API_KEY: '${{ secrets.API_URL }}'
+            API_URL: '${{ secrets.API_URL }}',
+            API_KEY: '${{ secrets.API_KEY }}'
           };
           EOF
 
