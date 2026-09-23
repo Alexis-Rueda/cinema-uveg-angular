@@ -6,6 +6,7 @@
     "paths": {
       "@movies/*": ["./src/app/movies/*"],
       "@shared/*": ["./src/app/shared/*"],
+      "@environments/*": ["./src/environments/*"]
     },
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,

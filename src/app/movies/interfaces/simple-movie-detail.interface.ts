@@ -1,6 +1,6 @@
 import { Genre, ProductionCompany, ProductionCountry } from "./movie-detail.interface";
 
-export interface SimpleMovieDetailResponse {
+export interface SimpleMovieDetail {
   id:                    number;
   title:                 string;
   backdrop_path:         string;

@@ -1,11 +1,11 @@
 import { MovieDetailResponse } from "./movie-detail.interface";
-import { SimpleMovieDetailResponse } from "./simple-movie-detail.interface";
-import { SimpleTopRatedMovie } from "./simple-top-rated-movie.interface";
-import { TopRatedMovie } from "./top-rated-movies.interface";
+import { SimpleMovieDetail } from "./simple-movie-detail.interface";
+import { SimpleTopRatedMovie, SimpleTopRatedResponse } from "./simple-top-rated-movie.interface";
+import { TopRatedMovie, TopRatedResponse } from "./top-rated-movies.interface";
 
 export class MovieMapper {
 
-  static toSimpleMovieDetail(movie: MovieDetailResponse): SimpleMovieDetailResponse {
+  static toSimpleMovieDetail(movie: MovieDetailResponse): SimpleMovieDetail {
     return {
       id: movie.id,
       title: movie.title,
@@ -20,6 +20,15 @@ export class MovieMapper {
       release_date: movie.release_date,
       status: movie.status,
       vote_average: movie.vote_average
+    }
+  }
+
+  static toSimpleTopRatedMovieResponse(movies: TopRatedResponse): SimpleTopRatedResponse {
+    return {
+      page: movies.page,
+      movies: movies.results.map(this.toSimpleTopRatedMovie),
+      total_pages: movies.total_pages,
+      total_results: movies.total_results
     }
   }
 
