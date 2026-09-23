@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { environment } from '@environments/environment.development';
+import { environment } from '@environments/environment';
 import { MovieDetailResponse, MovieMapper, SimpleMovieDetail, SimpleTopRatedMovie, TopRatedResponse } from '@movies/interfaces';
 import { map, Observable, of, tap } from 'rxjs';
 
